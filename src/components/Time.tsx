@@ -47,7 +47,7 @@ const TimeRuler = ({ zoom, duration, scrollLeft }: { zoom: number; duration: num
 
     for (let i = 0; i * PIXELS_PER_SECOND * zoom < totalWidth; i += minorStep) {
       const x = i * PIXELS_PER_SECOND * zoom - scrollLeft;
-      
+
       if (x < 0 || x > width) continue; // Don't draw off-screen ticks
 
       if (i % step === 0) {
@@ -86,7 +86,7 @@ export default function Scrollabletimeline() {
 
   const [currentTime, setCurrentTime] = useState(0);
   const [zoom, setZoom] = useState(1);
-  const [duration, setDuration] = useState(15); // Total timeline duration in seconds
+  const [duration, setDuration] = useState(25); // Total timeline duration in seconds
   const [activeDrag, setActiveDrag] = useState<any>(null);
 
   const timelineContainerRef = useRef<HTMLDivElement>(null);
@@ -129,7 +129,7 @@ export default function Scrollabletimeline() {
                 newDuration = potentialNewDuration;
               }
             }
-            
+
             return { ...clip, start: newStart, duration: newDuration };
           }),
         };
@@ -140,7 +140,7 @@ export default function Scrollabletimeline() {
   const handleMouseUp = useCallback(() => {
     setActiveDrag(null);
   }, []);
-  
+
   // Add/remove global mouse listeners when a drag starts/stops
   useEffect(() => {
     if (activeDrag) {
@@ -159,43 +159,54 @@ export default function Scrollabletimeline() {
 
   // --- JSX ---
   return (
-    <div className="bg-gray-900 text-white  min-h-screen font-sans flex flex-col p-4">
-      <h1 className="text-2xl font-bold mb-4">Video Editor Timeline</h1>
-      
+    <div className="bg-gray-900 text-white h-1/2  font-sans flex flex-col px-4 py-1">
+      {/* <h1 className="text-2xl font-bold mb-4">Video Editor Timeline</h1> */}
+
       {/* Controls */}
-      <div className="flex items-center gap-4 mb-4 p-2 bg-gray-800 rounded-md">
+      <div className="flex items-center gap-4 mb-1 p-1 bg-gray-800 rounded-md">
         <button onClick={() => setCurrentTime(0)} className="px-3 py-1 bg-gray-700 rounded">To Start</button>
-        <span>Time: {currentTime.toFixed(2)}s  <input type="number" name="time" onChange={(e)=>setCurrentTime(parseInt(e.target.value))} placeholder='0.00s' /> </span>
+        <span>Time: {currentTime.toFixed(2)}s  <input type="number" name="time" onChange={(e) => setCurrentTime(parseInt(e.target.value))} placeholder='0.00s' /> </span>
         <div className="flex-grow"></div>
         <span>Zoom:</span>
-        <button onClick={() => setZoom(z => Math.max(0.2, z / 1.5))} className="px-3 py-1 bg-gray-700 rounded">-</button>
+        <button onClick={() => setZoom(z => Math.max(1, z / 1.5))} className="px-3 py-1 bg-gray-700 rounded">-</button>
         <button onClick={() => setZoom(1)} className="px-3 py-1 bg-gray-700 rounded">Reset</button>
         <button onClick={() => setZoom(z => Math.min(10, z * 1.5))} className="px-3 py-1 bg-gray-700 rounded">+</button>
       </div>
 
       {/* Timeline */}
-      <div 
-        className="flex-grow overflow-x-auto bg-gray-700 rounded-md"
+      <div
+        className="flex-grow overflow-x-auto bg-gray-700 rounded-md scrollbar-hide"
+        style={{
+          scrollbarWidth: 'none', // Firefox
+          msOverflowStyle: 'none', // IE 10+
+        }}
         onScroll={(e) => setScrollLeft(e.currentTarget.scrollLeft)}
       >
-        <div 
+        <style>
+          {`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        `}
+        </style>
+        <div
           ref={timelineContainerRef}
-          className="relative" 
+          className="relative"
           style={{ width: `${secondsToPixels(duration)}px` }}
         >
           {/* Ruler */}
           <div className="sticky top-0 z-20">
-             <TimeRuler zoom={zoom} duration={duration} scrollLeft={scrollLeft} />
+            <TimeRuler zoom={zoom} duration={duration} scrollLeft={scrollLeft} />
           </div>
 
           {/* Playhead */}
-          <div 
+          <div
             className="absolute bottom-0 h-[90%] w-0.5 bg-red-200 z-30"
             style={{ left: `${secondsToPixels(currentTime)}px` }}
           >
             <div className="absolute -top-1 -left-1.5 w-4 h-4 z-30 bg-red-200 rounded-full"></div>
           </div>
-          
+
           {/* Tracks and Clips */}
           <div className="relative pt-2">
             {tracks.map(track => (
@@ -220,7 +231,7 @@ export default function Scrollabletimeline() {
                     }}
                   >
                     {/* Resize Handles */}
-                    <div 
+                    <div
                       className="absolute left-0 top-0 h-full w-2 cursor-ew-resize"
                       onMouseDown={(e) => {
                         e.stopPropagation();
@@ -235,7 +246,7 @@ export default function Scrollabletimeline() {
                       }}
                     ></div>
                     <div className='flex flex-row gap-3'><span>{clip.text}</span><span>{clip.duration.toFixed(2)}:00s</span></div>
-                    <div 
+                    <div
                       className="absolute right-0 top-0 h-full w-2 cursor-ew-resize"
                       onMouseDown={(e) => {
                         e.stopPropagation();
