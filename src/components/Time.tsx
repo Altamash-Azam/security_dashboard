@@ -40,10 +40,10 @@ const TimeRuler = ({ zoom, duration, scrollLeft }: { zoom: number; duration: num
 
     // Style
     ctx.fillStyle = '#FFFFFF'; // gray-400
-    ctx.font = '12px sans-serif';
+    ctx.font = '3px sans-serif';
 
     const step = 1; // Major tick every 1 second
-    const minorStep = 0.2; // Minor tick every 0.2 seconds
+    const minorStep = 0.1; // Minor tick every 0.2 seconds
 
     for (let i = 0; i * PIXELS_PER_SECOND * zoom < totalWidth; i += minorStep) {
       const x = i * PIXELS_PER_SECOND * zoom - scrollLeft;
@@ -52,16 +52,16 @@ const TimeRuler = ({ zoom, duration, scrollLeft }: { zoom: number; duration: num
 
       if (i % step === 0) {
         // Major tick
-        ctx.fillRect(x, height - 20, 1, 20);
+        ctx.fillRect(x, height - 20, 1, 15);
         ctx.fillText(`${i}s`, x + 4, height - 8);
       } else {
         // Minor tick
-        ctx.fillRect(x, height - 10, 1, 10);
+        ctx.fillRect(x, height - 10, 1, 5);
       }
     }
   }, [zoom, duration, scrollLeft]);
 
-  return <canvas ref={rulerRef} width={1200} height={30} className="w-full h-[30px] bg-gray-900" />;
+  return <canvas ref={rulerRef} width={1200} height={30} className="w-full py-0 my-0 bg-black" />;
 };
 
 
@@ -72,14 +72,14 @@ export default function Scrollabletimeline() {
     {
       id: 'track-1',
       clips: [
-        { id: 'clip-1', start: 1, duration: 3, text: 'Unauthorized access', trackId: 'track-1', color: 'bg-amber-500' },
-        { id: 'clip-2', start: 5, duration: 2, text: 'Gun Threat', trackId: 'track-1', color: 'bg-slate-500' },
+        { id: 'clip-1', start: 1, duration: 5, text: 'Unauthorized access', trackId: 'track-1', color: 'bg-amber-500' },
+        { id: 'clip-2', start: 8, duration: 4, text: 'Gun Threat', trackId: 'track-1', color: 'bg-slate-500' },
       ],
     },
     {
       id: 'track-2',
       clips: [
-        { id: 'clip-3', start: 2.5, duration: 4, text: 'Face Recognized', trackId: 'track-2', color: 'bg-teal-500' },
+        { id: 'clip-3', start: 15, duration: 5, text: 'Face Recognized', trackId: 'track-2', color: 'bg-teal-500' },
       ],
     },
   ]);
@@ -159,23 +159,23 @@ export default function Scrollabletimeline() {
 
   // --- JSX ---
   return (
-    <div className="bg-gray-900 text-white h-1/2  font-sans flex flex-col px-4 py-1">
+    <div className="bg-black text-white h-1/2  font-sans flex flex-col px-4 py-1">
       {/* <h1 className="text-2xl font-bold mb-4">Video Editor Timeline</h1> */}
 
       {/* Controls */}
-      <div className="flex items-center gap-4 mb-1 p-1 bg-gray-800 rounded-md">
-        <button onClick={() => setCurrentTime(0)} className="px-3 py-1 bg-gray-700 rounded">To Start</button>
+      <div className="flex items-center gap-4  p-1 text-sm bg-[#131313] rounded-md">
+        <button onClick={() => setCurrentTime(0)} className="px-3 py-1 bg-black text-sm rounded">To Start</button>
         <span>Time: {currentTime.toFixed(2)}s  <input type="number" name="time" onChange={(e) => setCurrentTime(parseInt(e.target.value))} placeholder='0.00s' /> </span>
         <div className="flex-grow"></div>
         <span>Zoom:</span>
-        <button onClick={() => setZoom(z => Math.max(1, z / 1.5))} className="px-3 py-1 bg-gray-700 rounded">-</button>
-        <button onClick={() => setZoom(1)} className="px-3 py-1 bg-gray-700 rounded">Reset</button>
-        <button onClick={() => setZoom(z => Math.min(10, z * 1.5))} className="px-3 py-1 bg-gray-700 rounded">+</button>
+        <button onClick={() => setZoom(z => Math.max(1, z / 1.5))} className="px-3 py-1 bg-black rounded">-</button>
+        <button onClick={() => setZoom(1)} className="px-3 py-1 bg-black rounded">Reset</button>
+        <button onClick={() => setZoom(z => Math.min(10, z * 1.5))} className="px-3 py-1 bg-black rounded">+</button>
       </div>
 
       {/* Timeline */}
       <div
-        className="flex-grow overflow-x-auto bg-gray-700 rounded-md scrollbar-hide"
+        className="flex-grow overflow-x-auto bg-[#232323] rounded-md scrollbar-hide"
         style={{
           scrollbarWidth: 'none', // Firefox
           msOverflowStyle: 'none', // IE 10+
@@ -210,7 +210,7 @@ export default function Scrollabletimeline() {
           {/* Tracks and Clips */}
           <div className="relative pt-2">
             {tracks.map(track => (
-              <div key={track.id} className="h-20 flex justify-center border-b border-gray-400">
+              <div key={track.id} className="h-15 flex items-center border-b border-gray-400">
                 {track.clips.map(clip => (
                   <div
                     key={clip.id}
