@@ -6,7 +6,7 @@ This project is a full-stack web application designed to monitor and manage secu
 
 A live version of this project is deployed on Vercel.
 
-**URL:** [https://your-project-url.vercel.app](https://your-project-url.vercel.app) 
+**URL:** [https://securesight-aa.vercel.app/](https://securesight-aa.vercel.app/) 
 
 ---
 
