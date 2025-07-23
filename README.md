@@ -41,7 +41,7 @@ Given more time, here are several improvements I would prioritize to enhance the
 -   **Advanced Filtering & Sorting:** Add UI controls to allow users to filter the incident list by camera, date range, or incident type, and to sort the results.
 -   **Pagination:** For the incident list, implement pagination on the backend and frontend to efficiently handle a large number of incidents without performance degradation.
 -   **CI/CD Pipeline:** Set up a Continuous Integration/Continuous Deployment pipeline (e.g., using GitHub Actions) to automate testing and deployment.
--   **Interactive Video Player:** Replace the static image in the player with a functional video player that could play back actual incident footage, potentially with interactive timeline scrubbing.
+-   **Interactive Timeline & Player:** Replace the static images with a functional video player and an interactive timeline. This would include features like scrubbing the playhead, zooming in/out of the time scale, and dynamically displaying incident markers on the timeline that a user could click to jump to that point in the video.
 -   **Enhanced Responsiveness:** While the current layout is responsive, I would further refine the UI for smaller mobile screens, potentially creating a tabbed or stacked layout to ensure all information is easily accessible without horizontal scrolling.
 
 ---
