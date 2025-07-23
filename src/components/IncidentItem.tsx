@@ -62,7 +62,7 @@ const IncidentItem: React.FC<IncidentItemProps> = ({ incident, onResolve }) => {
         </div>
         <div className='flex items-center justify-center'>
           <button onClick={handleResolveClick} className="p-1">
-            <img src="assets/Resolve.svg" alt="Resolve button" className="w-5 h-5 md:w-6 md:h-6" />
+            <img src="assets/Resolve.svg" alt="Resolve button" className="" />
           </button>
         </div>
       </div>

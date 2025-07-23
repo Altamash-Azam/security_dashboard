@@ -7,7 +7,7 @@ interface Params {
   id: string;
 }
 
-export async function PATCH(request: Request, context: { params: Params }) {
+export async function PATCH(request: Request, context: { params: { id: string } }) {
   try {
     await dbConnect();
     const param = await context.params;
