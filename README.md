@@ -42,6 +42,7 @@ Given more time, here are several improvements I would prioritize to enhance the
 -   **Pagination:** For the incident list, implement pagination on the backend and frontend to efficiently handle a large number of incidents without performance degradation.
 -   **CI/CD Pipeline:** Set up a Continuous Integration/Continuous Deployment pipeline (e.g., using GitHub Actions) to automate testing and deployment.
 -   **Interactive Video Player:** Replace the static image in the player with a functional video player that could play back actual incident footage, potentially with interactive timeline scrubbing.
+-   **Enhanced Responsiveness:** While the current layout is responsive, I would further refine the UI for smaller mobile screens, potentially creating a tabbed or stacked layout to ensure all information is easily accessible without horizontal scrolling.
 
 ---
 
