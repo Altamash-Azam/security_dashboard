@@ -76,6 +76,8 @@ const MainSection = () => {
           </div>
           {/* You can make this part dynamic later */}
           <div className='flex flex-row items-center'>
+            <img src="assets/small-icons.svg" alt="" />
+            <img src="assets/check-check.svg" alt="" />
             <span className="text-xs text-gray-400">4 resolved incidents</span>
           </div>
         </div>
