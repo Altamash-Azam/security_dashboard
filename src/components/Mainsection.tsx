@@ -64,6 +64,18 @@ const MainSection = () => {
           <img src="assets/disc.svg" alt="camera" className="mr-1.5" />
           <span>Camera-01</span>
         </div>
+
+        <div className='absolute right-0 bottom-0 mb-3 mr-2 flex flex-row gap-3'>
+          <div className='bg-black/90 flex flex-col'>
+            <div className='flex flex-row justify-between px-2'><span className='text-[8px]'>camera - 02</span> <img src="assets/dots.svg" alt="" /></div>
+            <div><img src="assets/small-camera1.svg" alt="" /></div>
+          </div>
+          <div className='bg-black/90 flex flex-col'>
+            <div className='flex flex-row justify-between px-2'><span className='text-[8px]'>camera - 02</span> <img src="assets/dots.svg" alt="" /></div>
+            <div><img src="assets/small-camera1.svg" alt="" /></div>
+          </div>
+        </div>
+
         {/* Additional camera thumbnails would go here */}
       </div>
 
