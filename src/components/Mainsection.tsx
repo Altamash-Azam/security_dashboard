@@ -80,7 +80,7 @@ const MainSection = () => {
           </div>
         </div>
 
-        <div className='overflow-y-auto flex-grow p-2 flex flex-col gap-2'>
+        <div className='overflow-y-auto flex-grow p-2 flex flex-col gap-2 scrollbar-hide'>
           {isLoading ? (
             <p className="text-center text-gray-400 p-4">Loading Incidents...</p>
           ) : (
