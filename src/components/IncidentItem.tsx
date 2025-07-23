@@ -41,28 +41,28 @@ const IncidentItem: React.FC<IncidentItemProps> = ({ incident, onResolve }) => {
 
   return (
     <div className={`transition-opacity duration-300 ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
-      <div className='flex flex-row p-1 pr-3 gap-2'>
-        <img className='rounded-lg w-24 h-16 object-cover' src={incident.thumbnailUrl} alt={incident.type} />
-        <div className='flex flex-col justify-between w-[67%]'>
-          <div className='flex flex-row items-center text-sm'>
-            <img src={getIcon(incident.type)} alt="icon" className="mr-1.5 w-4 h-4" />
+      <div className='flex flex-row p-1 pr-2 md:pr-3 gap-2'>
+        <img className='rounded-lg w-20 md:w-24 h-14 md:h-16 object-cover' src={incident.thumbnailUrl} alt={incident.type} />
+        <div className='flex flex-col justify-between flex-1 md:w-[67%]'>
+          <div className='flex flex-row items-center text-xs md:text-sm'>
+            <img src={getIcon(incident.type)} alt="icon" className="mr-1.5 w-3 h-3 md:w-4 md:h-4" />
             <span>{incident.type}</span>
           </div>
           <div>
-            <div className='flex flex-row text-[10px] font-normal gap-1 items-center'>
-              <img className='w-[10px]' src="assets/camera.svg" alt="camera icon" />
+            <div className='flex flex-row text-[8px] md:text-[10px] font-normal gap-1 items-center'>
+              <img className='w-[8px] md:w-[10px]' src="assets/camera.svg" alt="camera icon" />
               {/* Accessing populated camera data */}
               <span>{incident.cameraId.name}</span>
             </div>
-            <div className='flex flex-row text-[10px] font-bold gap-1 items-center'>
-              <img className='w-[10px]' src="assets/clock.svg" alt="clock icon" />
+            <div className='flex flex-row text-[8px] md:text-[10px] font-bold gap-1 items-center'>
+              <img className='w-[8px] md:w-[10px]' src="assets/clock.svg" alt="clock icon" />
               <span>{formatDate(incident.tsStart)}</span>
             </div>
           </div>
         </div>
         <div className='flex items-center justify-center'>
-          <button onClick={handleResolveClick}>
-            <img src="assets/Resolve.svg" alt="Resolve button" />
+          <button onClick={handleResolveClick} className="p-1">
+            <img src="assets/Resolve.svg" alt="Resolve button" className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
       </div>
