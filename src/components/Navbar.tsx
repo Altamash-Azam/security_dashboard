@@ -3,7 +3,7 @@ import React from 'react'
 const Navbar = () => {
   return (
     <div className='flex flex-row justify-between items-center pt-4 pb-3 px-6 border-gray-700 border-b-2  '>
-      <div className='flex flex-row gap-1'> <img src="assets/logo.svg" alt="" /> <div><span className='font-normal'>MANDALAC</span> <span className='font-extrabold'>X</span></div> </div>
+      <div className='flex flex-row gap-1'> <img src="assets/logo.svg" alt="" /> <div><span className='font-normal'>SECURE</span><span className='font-extrabold'>SIGHTS</span></div> </div>
       <div className='flex flex-row gap-6'>
         <div className='flex flex-row items-center gap-1'> <img src="assets/Dashboard.svg" alt="" /> <span className='text-[12px]'>Dashboard</span></div>
         <div className='flex flex-row items-center gap-1'> <img src="assets/camera.svg" alt="" /> <span className='text-[12px]'>Camera</span></div>
