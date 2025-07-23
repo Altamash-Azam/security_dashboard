@@ -71,7 +71,7 @@ const MainSection = () => {
             <div><img src="assets/sm-screenshot/sm-screenshot1.svg" alt="" /></div>
           </div>
           <div className='bg-black/90 flex flex-col'>
-            <div className='flex flex-row justify-between px-2'><span className='text-[8px]'>camera - 02</span> <img src="assets/dots.svg" alt="" /></div>
+            <div className='flex flex-row justify-between px-2'><span className='text-[8px]'>camera - 03</span> <img src="assets/dots.svg" alt="" /></div>
             <div><img src="assets/small-camera1.svg" alt="" /></div>
           </div>
         </div>
