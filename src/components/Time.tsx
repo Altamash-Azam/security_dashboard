@@ -72,14 +72,14 @@ export default function Scrollabletimeline() {
     {
       id: 'track-1',
       clips: [
-        { id: 'clip-1', start: 1, duration: 5, text: 'Unauthorized access', trackId: 'track-1', color: 'bg-amber-500' },
-        { id: 'clip-2', start: 8, duration: 4, text: 'Gun Threat', trackId: 'track-1', color: 'bg-slate-500' },
+        { id: 'clip-1', start: 1, duration: 5, text: 'Unauthorized access', trackId: 'track-1', color: 'bg-[#172554]' },
+        { id: 'clip-2', start: 8, duration: 4, text: 'Gun Threat', trackId: 'track-1', color: 'bg-[#431407]' },
       ],
     },
     {
       id: 'track-2',
       clips: [
-        { id: 'clip-3', start: 15, duration: 5, text: 'Face Recognized', trackId: 'track-2', color: 'bg-teal-500' },
+        { id: 'clip-3', start: 15, duration: 5, text: 'Face Recognized', trackId: 'track-2', color: 'bg-[#042f2e]' },
       ],
     },
   ]);
@@ -214,7 +214,7 @@ export default function Scrollabletimeline() {
                 {track.clips.map(clip => (
                   <div
                     key={clip.id}
-                    className={`absolute h-8 top-2 rounded-md flex items-center justify-center text-sm cursor-move select-none ${clip.color}`}
+                    className={`absolute h-fit py-1 top-2 rounded-md flex items-center justify-center text-sm cursor-move select-none ${clip.color}`}
                     style={{
                       left: `${secondsToPixels(clip.start)}px`,
                       width: `${secondsToPixels(clip.duration)}px`,
@@ -245,7 +245,7 @@ export default function Scrollabletimeline() {
                         });
                       }}
                     ></div>
-                    <div className='flex flex-row gap-3'><span>{clip.text}</span><span>{clip.duration.toFixed(2)}:00s</span></div>
+                    <div className='flex flex-row text-xs gap-3'><span>{clip.text}</span><span>{clip.duration.toFixed(2)}:00s</span></div>
                     <div
                       className="absolute right-0 top-0 h-full w-2 cursor-ew-resize"
                       onMouseDown={(e) => {

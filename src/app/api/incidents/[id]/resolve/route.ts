@@ -10,7 +10,8 @@ interface Params {
 export async function PATCH(request: Request, context: { params: Params }) {
   try {
     await dbConnect();
-    const id = context.params.id;
+    const param = await context.params;
+    const id = param.id;
     
     const incident = await Incident.findByIdAndUpdate(
       id,
